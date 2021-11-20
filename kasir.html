@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Pembelanjaan kasir</title>
+ <link rel="stylesheet" type="text/css" href="../celvin/css/stylee.css">
+</head>
+<body>
+    <center>
+<div class="row container">
+<div class="col-sm-5 container">
+<div class="card">
+<div class="card-body">
+     <h5 class="card-title">--Menu--</h5>
+    <center>
+         <li>Nasi goreng biasa rp.15.000</li>
+         <li>Nasi goreng kambing rp.10.000</li>
+         <li>Nasi goreng pete rp.17.000</li>
+         <li>Mie tektek rp.15.000</li>
+    </center
+ </div>
+ </div>
+</div>
+ <div>
+  <table border="1">
+   <tr>    
+    <th>Nama</th>
+    <th><input type="text"  id="nama" onchange="total()" ></th>
+   </tr>
+   
+   <tr>    
+   <th>Harga</th>
+    <th><input type="number"  id="harga" onchange="total()"></th>
+   </tr>
+
+   <tr>    
+    <th>Jumlah Beli</th>    
+    <th><input type="number" id="jumlah"  value="0" onchange="total()"></th>
+   </tr>
+   
+   <tr>    
+    <th>kategori</th>
+    <th><select id="status" onchange="total()">
+   <option>nasi goreng biasa</option>
+   <option>nasi goreng kambing</option>
+   <option>nasi goreng pete</option>
+   <option>mie tektek</option>
+
+    </select></th>
+   </tr>
+   <tr>    
+    <th>jumlah total</th>
+    <th><input type="text" style="background: rgb(119, 0, 255)" id="total" disabled></th>
+   </tr>
+
+   <tr>    
+    <th>Pembayaran</th>    
+    <th><input type="number" id="bayar" onchange="total()"></th>
+   </tr>
+   
+   <tr>    
+    <th>Kembalian</th>
+    <th><input type="text" style="background: rgb(89, 0, 255)" id="total1" disabled></th>
+   </tr>
+   <tr>   
+    <table width="300" height="201px" border="8">
+    <th><label align="landscape"  id="cetak" ></label></th>
+    </table>
+   </tr>         
+  </table>
+  <script type="text/javascript">
+  
+  function total() {
+   var nama = document.getElementById('nama').value;
+   var harga =  parseInt(document.getElementById('harga').value);
+   var jumlah_beli =  parseInt(document.getElementById('jumlah').value);
+   var pembayaran =  parseInt(document.getElementById('bayar').value);
+   var jenis = document.getElementById("status").value;
+   var jumlah_harga = harga * jumlah_beli;
+    document.getElementById('total').value = jumlah_harga;
+
+   var kembali = pembayaran - jumlah_harga;
+    document.getElementById('total1').value = kembali;
+  
+   var cetak = "Nama    : "+nama+"</br>"+
+                      "Harga   : "+harga+"</br>"+
+                      "Jumlah_beli  : "+jumlah_beli+"</br>"+
+                      "Kategori   : "+jenis+"</br>"+
+                      "Jumlah_total  : "+jumlah_harga+"</br>"+
+                      "pembayaran  : "+pembayaran+"</br>"+
+                      "Kembalian  : "+kembali;
+    document.getElementById("cetak").innerHTML=cetak;
+  }
+  </script>
+  </cente>
+ </div>
+</body>
+</html>
